@@ -1,4 +1,4 @@
-from impostos _novos_POO import ISS, ICMS,
+from impostos_novos_POO import *
 # passagem de algorítmo para implementação da lógica (estratégias) 
 # como parâmetro é o padrão de projetos Strategy
 class CalculadorDeImpostos(object):
@@ -18,4 +18,5 @@ if __name__ == '__main__':
     # função passada como parâmetro para cálculo dos impostos
     calculador.realiza_calculo(orcamento, ISS())
     calculador.realiza_calculo(orcamento, ICMS())
-    #calculador.realiza_calculo(orcamento, calcula_ICMS)
+    calculador.realiza_calculo(orcamento, IKCV())
+    calculador.realiza_calculo(orcamento, ICPP())
