@@ -16,7 +16,10 @@ if __name__ == '__main__':
     calculador = CalculadorDeImpostos()
     orcamento = Orcamento(500)
     # função passada como parâmetro para cálculo dos impostos
-    calculador.realiza_calculo(orcamento, ISS())
-    calculador.realiza_calculo(orcamento, ICMS())
-    calculador.realiza_calculo(orcamento, IKCV())
-    calculador.realiza_calculo(orcamento, ICPP())
+    # calculador.realiza_calculo(orcamento, ISS())
+    # calculador.realiza_calculo(orcamento, ICMS())
+    # calculador.realiza_calculo(orcamento, IKCV())
+    # calculador.realiza_calculo(orcamento, ICPP())
+    calculador.realiza_calculo(orcamento, ISS(ICMS()))
+    calculador.realiza_calculo(orcamento, IKCV(ICPP()))
+
