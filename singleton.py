@@ -47,23 +47,39 @@ class MonoStateSingleton(object):
         # use __dict__ to store all states of one class
         self.__dict__ = self.__estado_compartilhado
 
+class MetaClassSingleton(type):
+    _instances = {}
+    # it's called when one object needs created for one class already exists
+    def __call__(cls, *args, **kwargs) -> None:
+        if cls not in cls._instances:
+            cls._instances[cls] = super(MetaClassSingleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+class MetaClassSingletonConcrete(metaclass=MetaClassSingleton):
+    pass
+
 
 if __name__ == '__main__':
-    b1 = MonoStateSingleton()
-    b2 = MonoStateSingleton()
-    b1.x=5
-    b2.x=10
-    print(b1)
-    print(b2)
-    print(b1.__dict__)
-    print(b2.__dict__)
 
-    s1 = Singleton()
-    print(s1)
-    s2 = Singleton()
-    print(s2)
-    l1 = LazySingleton()
-    LazySingleton.obter_instancia()
-    print('Objeto criado: ', l1.obter_instancia())
-    l2 = LazySingleton()
-    print(l2)
+    t1 = MetaClassSingletonConcrete()
+    t2 = MetaClassSingletonConcrete()
+    print(t1,t2)
+
+    # b1 = MonoStateSingleton()
+    # b2 = MonoStateSingleton()
+    # b1.x=5
+    # b2.x=10
+    # print(b1)
+    # print(b2)
+    # print(b1.__dict__)
+    # print(b2.__dict__)
+
+    # s1 = Singleton()
+    # print(s1)
+    # s2 = Singleton()
+    # print(s2)
+    # l1 = LazySingleton()
+    # LazySingleton.obter_instancia()
+    # print('Objeto criado: ', l1.obter_instancia())
+    # l2 = LazySingleton()
+    # print(l2)
