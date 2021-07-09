@@ -14,10 +14,10 @@ class Gato(Animal):
         print("miau miau")
 
 class Factory(object):
-    def get_sound(self, object_type) -> str:
-        return eval(object_type)().sound()
+    def create_object(self, object_type) -> str:
+        return eval(object_type)()
 
 if __name__ == '__main__':
     f = Factory()
-    f.get_sound('Gato')
-    f.get_sound('Cachorro')
+    f.create_object('Gato').sound()
+    f.create_object('Cachorro').sound()
