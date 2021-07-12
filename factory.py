@@ -14,7 +14,7 @@ class Gato(Animal):
         print("miau miau")
 
 class Factory(object):
-    def create_object(self, object_type) -> str:
+    def create_object(self, object_type) -> object:
         return eval(object_type)()
 
 if __name__ == '__main__':
